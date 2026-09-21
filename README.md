@@ -4,7 +4,7 @@
 CTA 또는 MRA 영상 한 장을 받아, 동맥류 복셀마다 52개 위치 클래스 중 하나를 붙인 라벨맵을 냅니다.
 
 이 저장소는 우리 실험에서 성능이 가장 좋았던 구성의 **코드 전체**입니다. 들어 있는 것은 Grand Challenge 컨테이너(`/opt/app`)에 들어가는 파일 그대로입니다.
-학습된 가중치는 들어 있지 않습니다([가중치](#가중치) 참고).
+학습된 가중치는 git 트리에 없고 Releases `V1`에 따로 올렸습니다([가중치와 데이터](#가중치와-데이터) 참고). 실험 기록은 [`records/`](records/README.md)에 있습니다.
 
 ---
 
@@ -188,7 +188,7 @@ MCC와 Precision은 10개 시드 전부에서 올랐습니다(10/10).
 ## 가중치와 데이터
 
 이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록만 있습니다.
-학습된 가중치는 용량 때문에 [Releases `v1.0`](https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/tag/v1.0)에 따로 올렸습니다.
+학습된 가중치는 용량 때문에 [Releases `V1`](https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/tag/V1)에 따로 올렸습니다.
 
 | Release 파일 | 크기 | 내용 | 들어가는 곳 |
 |---|---|---|---|
@@ -197,7 +197,7 @@ MCC와 Precision은 10개 시드 전부에서 올랐습니다(10/10).
 | `SHA256SUMS` | | 두 파일의 SHA-256 | |
 
 ```bash
-V=https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/download/v1.0
+V=https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/download/V1
 curl -LO $V/topaneu26-task2-model-weights.tar.gz
 curl -LO $V/final_rf_seed3.pkl
 curl -LO $V/SHA256SUMS && sha256sum -c SHA256SUMS
