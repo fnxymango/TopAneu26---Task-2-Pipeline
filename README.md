@@ -64,22 +64,23 @@ CTA 또는 MRA 영상 한 장을 받아, 동맥류 복셀마다 52개 위치 클
 TopAneu26---Task-2-Pipeline/
 ├── Dockerfile
 ├── README.md
-└── app/                                   ← 컨테이너의 /opt/app
-    ├── main.py
-    ├── inference.py
-    ├── topaneu_integrated.py
-    ├── fast_stages.py
-    ├── run_patch_filter.py
-    ├── requirements.txt
-    ├── src/                               ← ⑨ 패치 CNN 환각 필터 ※
-    └── topaneu/                           ← ①–⑧ 본체 (번들 루트, ENV TOPANEU_BUNDLE)
-        ├── code/sblee/nnunet/scripts/     ← 단계별 코드
-        ├── code/sblee/nnunet/analysis/    ← RF 피클 자리 (저장소에는 없음)
-        ├── code/TopAneu-26/eval/task2/    ← 조직위 공식 채점 코드 (평가용)
-        ├── dataset/TopAneu/               ← 52클래스 위치 이름표
-        ├── experiments/V5_.../            ← 혈관 후처리 파라미터
-        ├── nnunet/nnUNet_raw/             ← 두 nnU-Net 데이터셋의 dataset.json
-        └── vendor/Skeleton-Recall/        ← nnU-Net v2 포크
+├── app/                                   ← 컨테이너의 /opt/app
+│   ├── main.py
+│   ├── inference.py
+│   ├── topaneu_integrated.py
+│   ├── fast_stages.py
+│   ├── run_patch_filter.py
+│   ├── requirements.txt
+│   ├── src/                               ← ⑨ 패치 CNN 환각 필터 ※
+│   └── topaneu/                           ← ①–⑧ 본체 (번들 루트, ENV TOPANEU_BUNDLE)
+│       ├── code/sblee/nnunet/scripts/     ← 단계별 코드
+│       ├── code/sblee/nnunet/analysis/    ← RF 피클 자리 (Releases에서 받음)
+│       ├── code/TopAneu-26/eval/task2/    ← 조직위 공식 채점 코드 (평가용)
+│       ├── dataset/TopAneu/               ← 52클래스 위치 이름표
+│       ├── experiments/V5_.../            ← 혈관 후처리 파라미터
+│       ├── nnunet/nnUNet_raw/             ← 두 nnU-Net 데이터셋의 dataset.json
+│       └── vendor/Skeleton-Recall/        ← nnU-Net v2 포크
+└── records/                               ← 실험 기록 (규칙 · 제출 명세 · 실험 80개)
 ```
 
 ### 진입점과 오케스트레이션 — `app/`
@@ -186,19 +187,34 @@ MCC와 Precision은 10개 시드 전부에서 올랐습니다(10/10).
 
 ## 가중치와 데이터
 
-이 저장소에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드와 설정 파일만 있습니다.
-아래 가중치는 `.gitignore`로 막아 두었습니다.
+이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록만 있습니다.
+학습된 가중치는 용량 때문에 [Releases `v1.0`](https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/tag/v1.0)에 따로 올렸습니다.
 
-| 파일 | 크기 | 들어가는 곳 |
-|---|---|---|
-| `final_rf_seed3.pkl` (위치 분류 RF) | 68 MB | 빌드 전에 `app/topaneu/code/sblee/nnunet/analysis/`에 둠 → 이미지 안 |
-| 검출기 `models/detector/Dataset722_TopAneuPjh3cls417/…/fold_{0,1,2}/checkpoint_best.pth` | | 모델 탈볼 → `/opt/ml/model` |
-| 혈관 `models/vessel/Dataset800_TopAneuVessel417/…/fold_0/checkpoint_best.pth` | | 모델 탈볼 → `/opt/ml/model` |
-| 패치 필터 `patchclf/{headA.pt, meta.json}` | | 모델 탈볼 → `/opt/ml/model` |
+| Release 파일 | 크기 | 내용 | 들어가는 곳 |
+|---|---|---|---|
+| `topaneu26-task2-model-weights.tar.gz` | 1.8 GB | 검출기 `models/detector/Dataset722_…/fold_{0,1,2}` · 혈관 `models/vessel/Dataset800_…/fold_0` · 패치 필터 `patchclf/{headA.pt, meta.json}` | 풀어서 `/opt/ml/model`에 마운트 |
+| `final_rf_seed3.pkl` | 68 MB | 위치 분류 RF (seed 3) | 빌드 전에 `app/topaneu/code/sblee/nnunet/analysis/`에 둠 → 이미지 안 |
+| `SHA256SUMS` | | 두 파일의 SHA-256 | |
 
-RF를 다시 학습하려면 train split 병변 피처 표(`c5_location_v2.py build` 출력)가 필요합니다. 이 표도 정답 라벨이 들어 있어서 저장소에 넣지 않았습니다.
+```bash
+V=https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/download/v1.0
+curl -LO $V/topaneu26-task2-model-weights.tar.gz
+curl -LO $V/final_rf_seed3.pkl
+curl -LO $V/SHA256SUMS && sha256sum -c SHA256SUMS
+
+mkdir -p model && tar xzf topaneu26-task2-model-weights.tar.gz -C model     # → model/models/, model/patchclf/
+cp final_rf_seed3.pkl app/topaneu/code/sblee/nnunet/analysis/
+```
 
 모델 탈볼은 `/opt/ml/model`에 풀리고, 이미지 안의 `/opt/app/topaneu/models`가 `/opt/ml/model/models`를 가리키는 심볼릭 링크입니다.
+모델 탈볼은 2026-09-10 제출본의 Models 슬롯 파일과 같습니다(md5 `35fa1300046ec75f14fabf8a4d25d26b`).
+
+RF를 다시 학습하려면 train split 병변 피처 표(`c5_location_v2.py build` 출력)가 필요합니다. 이 표에는 정답 라벨이 들어 있어서 올리지 않았습니다.
+
+## 실험 기록
+
+[`records/`](records/README.md)에 이 구성에 이르기까지의 실험 기록 원문(실험 80개, 문서 162개)이 있습니다.
+채택 규칙, 시간순 주요 결론, 계열별 실험 목록은 [`records/README.md`](records/README.md)에 정리했습니다.
 
 ---
 
