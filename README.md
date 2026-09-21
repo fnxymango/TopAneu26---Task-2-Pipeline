@@ -74,7 +74,7 @@ TopAneu26---Task-2-Pipeline/
 │   ├── src/                               ← ⑨ 패치 CNN 환각 필터 ※
 │   └── topaneu/                           ← ①–⑧ 본체 (번들 루트, ENV TOPANEU_BUNDLE)
 │       ├── code/sblee/nnunet/scripts/     ← 단계별 코드
-│       ├── code/sblee/nnunet/analysis/    ← RF 피클 자리 (Releases에서 받음)
+│       ├── code/sblee/nnunet/analysis/    ← RF 학습 피처 표 · RF 피클 자리 (피클은 Releases)
 │       ├── code/TopAneu-26/eval/task2/    ← 조직위 공식 채점 코드 (평가용)
 │       ├── dataset/TopAneu/               ← 52클래스 위치 이름표
 │       ├── experiments/V5_.../            ← 혈관 후처리 파라미터
@@ -131,6 +131,8 @@ TopAneu26---Task-2-Pipeline/
 
 | 경로 | 내용 |
 |---|---|
+| `topaneu/code/sblee/nnunet/analysis/e11_feat_hyb_ov.json` | 제출 RF를 학습한 피처 표입니다. train split 병변마다 피처와 정답 위치 라벨이 들어 있습니다(`c5_location_v2.py build` 출력). 추론에는 쓰지 않고 RF를 다시 학습할 때 씁니다. |
+| `topaneu/code/sblee/nnunet/analysis/c10_feat_train.json` | 위 표의 이전판(랜드마크 좌표 피처 추가 전) |
 | `topaneu/code/TopAneu-26/eval/task2/` | 조직위 공식 채점 코드 사본 (`c5 eval`이 사용) |
 | `topaneu/dataset/TopAneu/dataset_split.json` | 52클래스 위치 이름표(`location_classes`)만 남긴 축약본입니다. 원본에 있던 케이스 목록과 메타는 공개 저장소라서 뺐습니다. |
 | `topaneu/experiments/V5_vessel_classweighted_postproc_417/postproc_params.json` | ⑥이 읽는 혈관 인접 표 (`scripts/` 안의 것과 같음) |
@@ -187,7 +189,7 @@ MCC와 Precision은 10개 시드 전부에서 올랐습니다(10/10).
 
 ## 가중치와 데이터
 
-이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록만 있습니다.
+이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록, RF 학습 피처 표만 있습니다.
 학습된 가중치는 용량 때문에 [Releases `V1`](https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/tag/V1)에 따로 올렸습니다.
 
 | Release 파일 | 크기 | 내용 | 들어가는 곳 |
@@ -209,7 +211,7 @@ cp final_rf_seed3.pkl app/topaneu/code/sblee/nnunet/analysis/
 모델 탈볼은 `/opt/ml/model`에 풀리고, 이미지 안의 `/opt/app/topaneu/models`가 `/opt/ml/model/models`를 가리키는 심볼릭 링크입니다.
 모델 탈볼은 2026-09-10 제출본의 Models 슬롯 파일과 같습니다(md5 `35fa1300046ec75f14fabf8a4d25d26b`).
 
-RF를 다시 학습하려면 train split 병변 피처 표(`c5_location_v2.py build` 출력)가 필요합니다. 이 표에는 정답 라벨이 들어 있어서 올리지 않았습니다.
+RF를 다시 학습할 때는 저장소의 피처 표 `app/topaneu/code/sblee/nnunet/analysis/e11_feat_hyb_ov.json`을 씁니다(`c5_location_v2.py eval --train-feat`).
 
 ## 실험 기록
 
