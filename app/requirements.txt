@@ -1,0 +1,30 @@
+# Pinned to the environment the components were validated in.
+#
+# torch is NOT listed: the base image supplies 2.5.1+cu121, the version sblee's detector and
+# vessel models were validated against. nnunetv2 is NOT listed either -- installing it would
+# shadow the vendored Skeleton-Recall fork that the vessel trainer needs at checkpoint load.
+#
+# seaborn looks optional and is not: the vendored trainer imports it through nnunet_logger, and
+# without it the detector checkpoint fails to load with ModuleNotFoundError (measured, not
+# guessed). scikit-learn must be exactly 1.7.2 to unpickle the RF.
+acvl_utils==0.2.6
+batchgenerators==0.25.3
+batchgeneratorsv2==0.3.5
+blosc2==4.3.3
+connected-components-3d==4.0.0
+dicom2nifti==2.6.2
+dynamic_network_architectures==0.4.4
+einops==0.8.2
+imagecodecs==2025.3.30
+matplotlib==3.10.9
+nibabel==5.4.2
+numpy==2.2.6
+pandas==2.3.3
+scikit-image==0.25.2
+scikit-learn==1.7.2
+scipy==1.15.3
+seaborn==0.13.2
+simpleitk==2.5.6
+tifffile==2025.5.10
+tqdm==4.70.0
+yacs==0.1.8

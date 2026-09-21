@@ -1,0 +1,12 @@
+# 학습된 가중치·모델은 저장소에 올리지 않는다 (README "가중치" 참고)
+*.pkl
+*.pth
+*.pt
+*.tar.gz
+models/
+app/topaneu/models
+# 실행 산출물
+test/input/
+test/output/
+__pycache__/
+*.pyc

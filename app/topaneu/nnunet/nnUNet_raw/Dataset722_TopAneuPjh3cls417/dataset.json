@@ -1,0 +1,14 @@
+{
+  "channel_names": {
+    "0": "noNorm"
+  },
+  "labels": {
+    "background": 0,
+    "vessel": 1,
+    "aneurysm": 2
+  },
+  "numTraining": 417,
+  "file_ending": ".nii.gz",
+  "name": "Dataset722_TopAneuPjh3cls417",
+  "description": "pjh Stage1 \uc7ac\ud604: 3-class(bg/vessel/aneurysm) + \ubaa8\ub2ec\ub9ac\ud2f0\ubcc4 robust z (\ube4c\ub4dc\uc2dc \uc815\uaddc\ud654 \uc644\ub8cc)"
+}

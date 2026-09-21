@@ -1,0 +1,619 @@
+{
+  "close_mm": 1.0,
+  "classes": {
+    "1": {
+      "name": "BA",
+      "n_cc_gt": 321,
+      "min_cc_vox": 366,
+      "median_cc_vox": 6045,
+      "neighbors": [
+        2,
+        3,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "neighbor_names": [
+        "R-P1P2",
+        "L-P1P2",
+        "R-VA",
+        "L-VA",
+        "R-SCA",
+        "L-SCA",
+        "R-AICA",
+        "L-AICA"
+      ]
+    },
+    "2": {
+      "name": "R-P1P2",
+      "n_cc_gt": 396,
+      "min_cc_vox": 27,
+      "median_cc_vox": 2869,
+      "neighbors": [
+        1,
+        8,
+        21,
+        25,
+        31
+      ],
+      "neighbor_names": [
+        "BA",
+        "R-Pcom",
+        "R-P3P4",
+        "R-SCA",
+        "R-AChA"
+      ]
+    },
+    "3": {
+      "name": "L-P1P2",
+      "n_cc_gt": 405,
+      "min_cc_vox": 32,
+      "median_cc_vox": 2765,
+      "neighbors": [
+        1,
+        6,
+        9,
+        12,
+        22,
+        26,
+        32
+      ],
+      "neighbor_names": [
+        "BA",
+        "L-ICA-C6-C7",
+        "L-Pcom",
+        "L-A1A2",
+        "L-P3P4",
+        "L-SCA",
+        "L-AChA"
+      ]
+    },
+    "4": {
+      "name": "R-ICA-C6-C7",
+      "n_cc_gt": 303,
+      "min_cc_vox": 887,
+      "median_cc_vox": 4495,
+      "neighbors": [
+        5,
+        8,
+        11,
+        31,
+        33,
+        35
+      ],
+      "neighbor_names": [
+        "R-M1",
+        "R-Pcom",
+        "R-A1A2",
+        "R-AChA",
+        "R-OA",
+        "R-ICA-C1-C5"
+      ]
+    },
+    "5": {
+      "name": "R-M1",
+      "n_cc_gt": 392,
+      "min_cc_vox": 16,
+      "median_cc_vox": 2287,
+      "neighbors": [
+        4,
+        17
+      ],
+      "neighbor_names": [
+        "R-ICA-C6-C7",
+        "R-M2"
+      ]
+    },
+    "6": {
+      "name": "L-ICA-C6-C7",
+      "n_cc_gt": 294,
+      "min_cc_vox": 1207,
+      "median_cc_vox": 4800,
+      "neighbors": [
+        7,
+        9,
+        12,
+        32,
+        34,
+        36
+      ],
+      "neighbor_names": [
+        "L-M1",
+        "L-Pcom",
+        "L-A1A2",
+        "L-AChA",
+        "L-OA",
+        "L-ICA-C1-C5"
+      ]
+    },
+    "7": {
+      "name": "L-M1",
+      "n_cc_gt": 372,
+      "min_cc_vox": 27,
+      "median_cc_vox": 2466,
+      "neighbors": [
+        6,
+        19
+      ],
+      "neighbor_names": [
+        "L-ICA-C6-C7",
+        "L-M2"
+      ]
+    },
+    "8": {
+      "name": "R-Pcom",
+      "n_cc_gt": 161,
+      "min_cc_vox": 20,
+      "median_cc_vox": 479,
+      "neighbors": [
+        2,
+        4,
+        31,
+        35
+      ],
+      "neighbor_names": [
+        "R-P1P2",
+        "R-ICA-C6-C7",
+        "R-AChA",
+        "R-ICA-C1-C5"
+      ]
+    },
+    "9": {
+      "name": "L-Pcom",
+      "n_cc_gt": 172,
+      "min_cc_vox": 20,
+      "median_cc_vox": 329,
+      "neighbors": [
+        3,
+        6,
+        26,
+        32,
+        36
+      ],
+      "neighbor_names": [
+        "L-P1P2",
+        "L-ICA-C6-C7",
+        "L-SCA",
+        "L-AChA",
+        "L-ICA-C1-C5"
+      ]
+    },
+    "10": {
+      "name": "Acom",
+      "n_cc_gt": 243,
+      "min_cc_vox": 24,
+      "median_cc_vox": 185,
+      "neighbors": [
+        11,
+        12,
+        15
+      ],
+      "neighbor_names": [
+        "R-A1A2",
+        "L-A1A2",
+        "3rd-A2"
+      ]
+    },
+    "11": {
+      "name": "R-A1A2",
+      "n_cc_gt": 370,
+      "min_cc_vox": 39,
+      "median_cc_vox": 2183,
+      "neighbors": [
+        4,
+        10,
+        12,
+        13,
+        14,
+        15
+      ],
+      "neighbor_names": [
+        "R-ICA-C6-C7",
+        "Acom",
+        "L-A1A2",
+        "R-A3",
+        "L-A3",
+        "3rd-A2"
+      ]
+    },
+    "12": {
+      "name": "L-A1A2",
+      "n_cc_gt": 352,
+      "min_cc_vox": 48,
+      "median_cc_vox": 2437,
+      "neighbors": [
+        6,
+        10,
+        11,
+        13,
+        14,
+        15
+      ],
+      "neighbor_names": [
+        "L-ICA-C6-C7",
+        "Acom",
+        "R-A1A2",
+        "R-A3",
+        "L-A3",
+        "3rd-A2"
+      ]
+    },
+    "13": {
+      "name": "R-A3",
+      "n_cc_gt": 372,
+      "min_cc_vox": 25,
+      "median_cc_vox": 1265,
+      "neighbors": [
+        11,
+        12,
+        14,
+        16
+      ],
+      "neighbor_names": [
+        "R-A1A2",
+        "L-A1A2",
+        "L-A3",
+        "3rd-A3"
+      ]
+    },
+    "14": {
+      "name": "L-A3",
+      "n_cc_gt": 397,
+      "min_cc_vox": 30,
+      "median_cc_vox": 908,
+      "neighbors": [
+        11,
+        12,
+        13,
+        16
+      ],
+      "neighbor_names": [
+        "R-A1A2",
+        "L-A1A2",
+        "R-A3",
+        "3rd-A3"
+      ]
+    },
+    "15": {
+      "name": "3rd-A2",
+      "n_cc_gt": 56,
+      "min_cc_vox": 17,
+      "median_cc_vox": 237,
+      "neighbors": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        16
+      ],
+      "neighbor_names": [
+        "Acom",
+        "R-A1A2",
+        "L-A1A2",
+        "R-A3",
+        "L-A3",
+        "3rd-A3"
+      ]
+    },
+    "16": {
+      "name": "3rd-A3",
+      "n_cc_gt": 107,
+      "min_cc_vox": 16,
+      "median_cc_vox": 149,
+      "neighbors": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "neighbor_names": [
+        "L-A1A2",
+        "R-A3",
+        "L-A3",
+        "3rd-A2"
+      ]
+    },
+    "17": {
+      "name": "R-M2",
+      "n_cc_gt": 961,
+      "min_cc_vox": 14,
+      "median_cc_vox": 158,
+      "neighbors": [
+        5,
+        18
+      ],
+      "neighbor_names": [
+        "R-M1",
+        "R-M3"
+      ]
+    },
+    "18": {
+      "name": "R-M3",
+      "n_cc_gt": 2564,
+      "min_cc_vox": 17,
+      "median_cc_vox": 225,
+      "neighbors": [
+        17
+      ],
+      "neighbor_names": [
+        "R-M2"
+      ]
+    },
+    "19": {
+      "name": "L-M2",
+      "n_cc_gt": 1015,
+      "min_cc_vox": 13,
+      "median_cc_vox": 144,
+      "neighbors": [
+        7,
+        20
+      ],
+      "neighbor_names": [
+        "L-M1",
+        "L-M3"
+      ]
+    },
+    "20": {
+      "name": "L-M3",
+      "n_cc_gt": 2648,
+      "min_cc_vox": 15,
+      "median_cc_vox": 211,
+      "neighbors": [
+        19
+      ],
+      "neighbor_names": [
+        "L-M2"
+      ]
+    },
+    "21": {
+      "name": "R-P3P4",
+      "n_cc_gt": 660,
+      "min_cc_vox": 14,
+      "median_cc_vox": 213,
+      "neighbors": [
+        2
+      ],
+      "neighbor_names": [
+        "R-P1P2"
+      ]
+    },
+    "22": {
+      "name": "L-P3P4",
+      "n_cc_gt": 643,
+      "min_cc_vox": 14,
+      "median_cc_vox": 235,
+      "neighbors": [
+        3,
+        26
+      ],
+      "neighbor_names": [
+        "L-P1P2",
+        "L-SCA"
+      ]
+    },
+    "23": {
+      "name": "R-VA",
+      "n_cc_gt": 441,
+      "min_cc_vox": 58,
+      "median_cc_vox": 4147,
+      "neighbors": [
+        1,
+        24,
+        27,
+        29
+      ],
+      "neighbor_names": [
+        "BA",
+        "L-VA",
+        "R-AICA",
+        "R-PICA"
+      ]
+    },
+    "24": {
+      "name": "L-VA",
+      "n_cc_gt": 430,
+      "min_cc_vox": 45,
+      "median_cc_vox": 5748,
+      "neighbors": [
+        1,
+        23,
+        28,
+        30
+      ],
+      "neighbor_names": [
+        "BA",
+        "R-VA",
+        "L-AICA",
+        "L-PICA"
+      ]
+    },
+    "25": {
+      "name": "R-SCA",
+      "n_cc_gt": 616,
+      "min_cc_vox": 13,
+      "median_cc_vox": 195,
+      "neighbors": [
+        1,
+        2
+      ],
+      "neighbor_names": [
+        "BA",
+        "R-P1P2"
+      ]
+    },
+    "26": {
+      "name": "L-SCA",
+      "n_cc_gt": 632,
+      "min_cc_vox": 15,
+      "median_cc_vox": 220,
+      "neighbors": [
+        1,
+        3,
+        9
+      ],
+      "neighbor_names": [
+        "BA",
+        "L-P1P2",
+        "L-Pcom"
+      ]
+    },
+    "27": {
+      "name": "R-AICA",
+      "n_cc_gt": 375,
+      "min_cc_vox": 13,
+      "median_cc_vox": 143,
+      "neighbors": [
+        1,
+        23,
+        29
+      ],
+      "neighbor_names": [
+        "BA",
+        "R-VA",
+        "R-PICA"
+      ]
+    },
+    "28": {
+      "name": "L-AICA",
+      "n_cc_gt": 339,
+      "min_cc_vox": 15,
+      "median_cc_vox": 154,
+      "neighbors": [
+        1,
+        24,
+        30
+      ],
+      "neighbor_names": [
+        "BA",
+        "L-VA",
+        "L-PICA"
+      ]
+    },
+    "29": {
+      "name": "R-PICA",
+      "n_cc_gt": 553,
+      "min_cc_vox": 15,
+      "median_cc_vox": 437,
+      "neighbors": [
+        23,
+        27,
+        30
+      ],
+      "neighbor_names": [
+        "R-VA",
+        "R-AICA",
+        "L-PICA"
+      ]
+    },
+    "30": {
+      "name": "L-PICA",
+      "n_cc_gt": 585,
+      "min_cc_vox": 13,
+      "median_cc_vox": 313,
+      "neighbors": [
+        24,
+        28,
+        29
+      ],
+      "neighbor_names": [
+        "L-VA",
+        "L-AICA",
+        "R-PICA"
+      ]
+    },
+    "31": {
+      "name": "R-AChA",
+      "n_cc_gt": 261,
+      "min_cc_vox": 13,
+      "median_cc_vox": 101,
+      "neighbors": [
+        2,
+        4,
+        8
+      ],
+      "neighbor_names": [
+        "R-P1P2",
+        "R-ICA-C6-C7",
+        "R-Pcom"
+      ]
+    },
+    "32": {
+      "name": "L-AChA",
+      "n_cc_gt": 300,
+      "min_cc_vox": 14,
+      "median_cc_vox": 97,
+      "neighbors": [
+        3,
+        6,
+        9
+      ],
+      "neighbor_names": [
+        "L-P1P2",
+        "L-ICA-C6-C7",
+        "L-Pcom"
+      ]
+    },
+    "33": {
+      "name": "R-OA",
+      "n_cc_gt": 393,
+      "min_cc_vox": 18,
+      "median_cc_vox": 264,
+      "neighbors": [
+        4,
+        35
+      ],
+      "neighbor_names": [
+        "R-ICA-C6-C7",
+        "R-ICA-C1-C5"
+      ]
+    },
+    "34": {
+      "name": "L-OA",
+      "n_cc_gt": 428,
+      "min_cc_vox": 17,
+      "median_cc_vox": 250,
+      "neighbors": [
+        6,
+        36
+      ],
+      "neighbor_names": [
+        "L-ICA-C6-C7",
+        "L-ICA-C1-C5"
+      ]
+    },
+    "35": {
+      "name": "R-ICA-C1-C5",
+      "n_cc_gt": 325,
+      "min_cc_vox": 158,
+      "median_cc_vox": 28889,
+      "neighbors": [
+        4,
+        33
+      ],
+      "neighbor_names": [
+        "R-ICA-C6-C7",
+        "R-OA"
+      ]
+    },
+    "36": {
+      "name": "L-ICA-C1-C5",
+      "n_cc_gt": 327,
+      "min_cc_vox": 305,
+      "median_cc_vox": 29181,
+      "neighbors": [
+        6,
+        9,
+        34
+      ],
+      "neighbor_names": [
+        "L-ICA-C6-C7",
+        "L-Pcom",
+        "L-OA"
+      ]
+    }
+  }
+}
