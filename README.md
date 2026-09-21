@@ -80,7 +80,8 @@ TopAneu26---Task-2-Pipeline/
 │       ├── experiments/V5_.../            ← 혈관 후처리 파라미터
 │       ├── nnunet/nnUNet_raw/             ← 두 nnU-Net 데이터셋의 dataset.json
 │       └── vendor/Skeleton-Recall/        ← nnU-Net v2 포크
-└── records/                               ← 실험 기록 (규칙 · 제출 명세 · 실험 80개)
+├── records/                               ← 실험 기록 (규칙 · 제출 명세 · 실험 80개와 실행 스크립트)
+└── research/                              ← 학습·분석 코드 전체 · 트레이너 · 전체 split
 ```
 
 ### 진입점과 오케스트레이션 — `app/`
@@ -157,7 +158,7 @@ TopAneu26---Task-2-Pipeline/
 
 ## 성능
 
-**채점 기준**: 조직위 개정 공식 eval(commit `60765a5`)로 채점했습니다. 로컬 held-out에서 test 83케이스, val 42케이스를 썼습니다.
+**채점 기준**: 조직위 개정 공식 eval(commit `60765a5`)로 채점했습니다. 로컬 held-out에서 test 83케이스, val 41케이스(2026-09 개정판 split)를 썼습니다.
 **반복**: 값은 RF 학습 시드 0–9의 평균 ± 표준편차입니다. 컨테이너에는 그중 seed 3 모델이 들어 있습니다.
 **비교 기준**: 가장 가까운 이전 구성(제출본 + FRAC 0.35 + OUT_GROW 1.32)과 비교했습니다.
 
@@ -189,7 +190,7 @@ MCC와 Precision은 10개 시드 전부에서 올랐습니다(10/10).
 
 ## 가중치와 데이터
 
-이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록, RF 학습 피처 표만 있습니다.
+이 저장소의 git 트리에는 **영상, 정답 마스크, 학습된 가중치가 없습니다.** 코드, 설정 파일, 실험 기록, RF 학습 피처 표, split 파일만 있습니다.
 학습된 가중치는 용량 때문에 [Releases `V1`](https://github.com/fnxymango/TopAneu26---Task-2-Pipeline/releases/tag/V1)에 따로 올렸습니다.
 
 | Release 파일 | 크기 | 내용 | 들어가는 곳 |
@@ -213,10 +214,12 @@ cp final_rf_seed3.pkl app/topaneu/code/sblee/nnunet/analysis/
 
 RF를 다시 학습할 때는 저장소의 피처 표 `app/topaneu/code/sblee/nnunet/analysis/e11_feat_hyb_ov.json`을 씁니다(`c5_location_v2.py eval --train-feat`).
 
-## 실험 기록
+## 실험 기록과 학습 코드
 
-[`records/`](records/README.md)에 이 구성에 이르기까지의 실험 기록 원문(실험 80개, 문서 162개)이 있습니다.
+[`records/`](records/README.md)에는 이 구성에 이르기까지의 실험 기록 원문(실험 80개, 문서 162개)이 있습니다. 각 실험의 실행 스크립트도 기록 옆에 함께 있습니다.
 채택 규칙, 시간순 주요 결론, 계열별 실험 목록은 [`records/README.md`](records/README.md)에 정리했습니다.
+
+[`research/`](research/README.md)에는 추론에 쓰지 않는 나머지 코드가 모두 있습니다. 학습 데이터 빌드, nnU-Net 커스텀 트레이너, 분류기 학습·분석, 평가 스크립트와 전체 split 파일입니다.
 
 ---
 
